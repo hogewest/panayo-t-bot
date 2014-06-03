@@ -1,3 +1,5 @@
+Process.daemon if ARGV.any? { |i| i == '-D' }
+
 require 'tweetstream'
 require 'yahoo-japanese-analysis'
 require 'panayo'
