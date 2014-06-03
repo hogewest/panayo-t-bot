@@ -1,4 +1,4 @@
-Process.daemon if ARGV.any? { |i| i == '-D' }
+Process.daemon(true, true) if ARGV.any? { |i| i == '-D' }
 
 require 'tweetstream'
 require 'yahoo-japanese-analysis'
