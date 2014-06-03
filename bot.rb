@@ -38,10 +38,10 @@ stream_client.userstream do |status|
     words = response[:Result][:WordList][:Word]
     if words.class == Array
       text = words.inject('') do |result, word|
-        result += word[:Furigana]
+        result += word[:Furigana] || word[:Surface]
       end
     else
-      text = words[:Furigana]
+      text = words[:Furigana] || words[:Surface]
     end
   end
 
