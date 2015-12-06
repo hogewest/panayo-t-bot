@@ -1,5 +1,3 @@
-Process.daemon(true, true) if ARGV.any? { |i| i == '-D' }
-
 require 'tweetstream'
 require 'yahoo-japanese-analysis'
 require 'panayo'
@@ -25,7 +23,7 @@ YahooJA.configure do |config|
   config.app_key = ''
 end
 
-stream_client = TweetStream::Client.new
+stream_client = TweetStream::Daemon.new('panayo-bot')
 stream_client.userstream do |status|
   return unless status.reply?
   return if status.user.id == rest_client.user.id
